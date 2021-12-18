@@ -28,6 +28,11 @@ module.exports = {
   resolve: {
     modules: [path.join(__dirname, 'src'), 'node_modules'], // 모듈 위치
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@hooks': path.resolve(__dirname, 'hooks'),
+      '@components': path.resolve(__dirname, 'components'),
+      '@pages': path.resolve(__dirname, 'pages'),
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
