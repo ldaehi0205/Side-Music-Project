@@ -66,7 +66,10 @@ module.exports = {
     // 분기에 따라 함수가 다른 동작을 갖도록 허용
     'no-else-return': 'off',
     // if문에서 else 이전 return 금지 해제
-    'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { peerDependencies: true, devDependencies: false, optionalDependencies: false, peerDependencies: false },
+    ],
     // 외부 패키지 사용 금지 해제
   },
   settings: {
