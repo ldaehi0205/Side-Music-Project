@@ -38,10 +38,13 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: `./public/index.html`,
+      filename: './index.html',
     }),
   ],
   devServer: {
     host: 'localhost',
+    historyApiFallback: true,
+    hot: true,
     port: 3000,
   },
 };
