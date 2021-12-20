@@ -68,7 +68,7 @@ module.exports = {
     // if문에서 else 이전 return 금지 해제
     'import/no-extraneous-dependencies': [
       'error',
-      { peerDependencies: true, devDependencies: false, optionalDependencies: false, peerDependencies: false },
+      { peerDependencies: true, devDependencies: true, optionalDependencies: true, peerDependencies: true },
     ],
     // 외부 패키지 사용 금지 해제
   },
