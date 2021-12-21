@@ -9,11 +9,11 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@hooks/*": ["hooks/*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"]
+      "@Hooks/*": ["src/hooks/*"],
+      "@Components/*": ["src/components/*"],
+      "@Pages/*": ["src/pages/*"]
     }
   }
 }
