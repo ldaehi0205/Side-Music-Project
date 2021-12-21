@@ -29,9 +29,9 @@ module.exports = {
     modules: [path.join(__dirname, 'src'), 'node_modules'], // 모듈 위치
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      '@hooks': path.resolve(__dirname, 'hooks'),
-      '@components': path.resolve(__dirname, 'components'),
-      '@pages': path.resolve(__dirname, 'pages'),
+      '@Hooks': path.resolve(__dirname, 'src/hooks'),
+      '@Components': path.resolve(__dirname, 'src/components'),
+      '@Pages': path.resolve(__dirname, 'src/pages'),
     },
   },
   plugins: [
