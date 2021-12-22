@@ -24,7 +24,7 @@ module.exports = {
       },
     ],
     // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
-    'no-console': ['error'],
+    'no-console': ['off'],
     // 콘솔을 쓰면 에러가 나던 규칙 해제
     'import/prefer-default-export': ['off'],
     // export const 문을 쓸때 에러를 내는 규칙 해제
