@@ -71,6 +71,7 @@ module.exports = {
       { peerDependencies: true, devDependencies: true, optionalDependencies: true, peerDependencies: true },
     ],
     // 외부 패키지 사용 금지 해제
+    'import/no-unresolved': 'off',
   },
   settings: {
     react: {
