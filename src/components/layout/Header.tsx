@@ -1,17 +1,28 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useCookies } from 'react-cookie';
+import Logo from '../Logo';
 
 const Header = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['connected']);
+
   return (
     <Wrapper>
       <LeftSection>
-        <Logo>Music</Logo>
+        <Logo />
         <Search />
       </LeftSection>
       <Admin>
-        <div>로그인</div>
+        {cookies.connected ? (
+          <div onClick={() => removeCookie('connected')}>로그아웃</div>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
         <div>/</div>
-        <div>회원가입</div>
+        {cookies.connected ? <div>{cookies.connected.name}님</div> : <Link to="/signup">회원가입</Link>}
       </Admin>
     </Wrapper>
   );
@@ -25,7 +36,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   height: 87px;
   padding: 0 62px;
-  border-bottom: #f5f6f8;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #fff;
 `;
 
 const LeftSection = styled.div`
@@ -33,11 +45,6 @@ const LeftSection = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 600px;
-`;
-
-const Logo = styled.div`
-  font-size: 47px;
-  font-family: cursive;
 `;
 
 const Search = styled.input`
@@ -54,11 +61,14 @@ const Admin = styled.div`
   display: flex;
   justify-content: space-between;
   height: 20px;
-  width: 102px;
+  width: 112px;
   font-size: 14px;
 
-  div:not(:nth-child(2)) {
+  a,
+  div {
     cursor: pointer;
+    text-decoration: none;
+    color: black;
     :hover {
       text-decoration: underline;
     }
