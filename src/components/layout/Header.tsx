@@ -31,13 +31,16 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 936px;
   height: 87px;
   padding: 0 62px;
   border-bottom: 1px solid #d9d9d9;
   background-color: #fff;
+  z-index: 10;
 `;
 
 const LeftSection = styled.div`
