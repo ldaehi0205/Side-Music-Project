@@ -1,16 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Headers from './Header';
-import Nav from './Nav';
-import RecentMusic from './RecentMusic';
 
 const Layout = () => {
   return (
     <Wrapper>
       <Headers />
       <Main>
-        <Nav />
-        <RecentMusic />
+        <Outlet />
       </Main>
     </Wrapper>
   );
@@ -24,4 +22,6 @@ const Wrapper = styled.div`
 `;
 const Main = styled.div`
   display: flex;
+  margin: 0 auto;
+  max-width: 1440px;
 `;

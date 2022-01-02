@@ -11,19 +11,24 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <LeftSection>
-        <Logo />
-        <Search />
-      </LeftSection>
-      <Admin>
-        {cookies.connected ? (
-          <div onClick={() => removeCookie('connected')}>로그아웃</div>
-        ) : (
-          <Link to="/login">로그인</Link>
-        )}
-        <div>/</div>
-        {cookies.connected ? <div>{cookies.connected.name}님</div> : <Link to="/signup">회원가입</Link>}
-      </Admin>
+      <HeaderContain>
+        <LeftSection>
+          <Logo />
+          {/* <Search /> */}
+          <Menu>최신 음악</Menu>
+          <Menu> 음악 차트</Menu>
+          <Menu> 음악 추천</Menu>
+        </LeftSection>
+        <Admin>
+          {cookies.connected ? (
+            <div onClick={() => removeCookie('connected')}>로그아웃</div>
+          ) : (
+            <Link to="/login">로그인</Link>
+          )}
+          <div>/</div>
+          {cookies.connected ? <div>{cookies.connected.name}님</div> : <Link to="/signup">회원가입</Link>}
+        </Admin>
+      </HeaderContain>
     </Wrapper>
   );
 };
@@ -32,22 +37,26 @@ export default Header;
 
 const Wrapper = styled.div`
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 936px;
-  height: 87px;
-  padding: 0 62px;
+  width: 100%;
   border-bottom: 1px solid #d9d9d9;
   background-color: #fff;
   z-index: 10;
+`;
+
+const HeaderContain = styled.div`
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1340px;
 `;
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 600px;
+  width: 400px;
 `;
 
 const Search = styled.input`
@@ -76,4 +85,20 @@ const Admin = styled.div`
       text-decoration: underline;
     }
   }
+`;
+
+const Menu = styled.div`
+  position: relative;
+  text-align: center;
+  width: 80px;
+  padding: 0px;
+  /* margin: 0px; */
+  margin-top: 10px;
+  color: rgb(126, 126, 126);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.4px;
+  box-sizing: border-box;
+  cursor: pointer;
 `;

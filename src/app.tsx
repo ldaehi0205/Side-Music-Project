@@ -1,19 +1,22 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from '@Pages/login/Login';
 import Signup from '@Pages/signup/Signup';
+import RecentMusic from '@Components/layout/RecentMusic';
 import Layout from './components/layout/Layout';
 
 const App = () => {
   return (
     <Wrapper>
-      <Switch>
-        <Route exact path="/" component={Layout} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-      </Switch>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<RecentMusic />} />
+        </Route>
+        <Route path="login/" element={<Login />} />
+        <Route path="signup/" element={<Signup />} />
+      </Routes>
     </Wrapper>
   );
 };
@@ -22,9 +25,9 @@ export default App;
 
 const Wrapper = styled.div`
   position: relative;
-  max-width: 1280px;
-  min-width: 800px;
+  /* max-width: 1280px; */
+  /* min-width: 800px; */
   min-height: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  /* margin-right: auto; */
+  /* margin-left: auto; */
 `;
