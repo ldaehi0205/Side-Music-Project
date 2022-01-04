@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Logo from '@Components/Logo';
 import { ApiCall } from '@Api/api';
 import styled from 'styled-components';
 
 const Signup = () => {
   const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\D]{8,}$/;
-  const history = useHistory();
+  const navigate = useNavigate();
   const [checkingPw, setCheckingPw] = useState('');
   const [userInfo, setUserInfo] = useState({
     id: '',
@@ -36,7 +36,7 @@ const Signup = () => {
     isLoginAble &&
       ApiCall.sendUserInfo(userInfo)
         .then((res) => {
-          history.push('/');
+          navigate('/');
         })
         .catch((err) => console.log(err));
   };
@@ -83,7 +83,6 @@ const Wrapper = styled.div`
   margin: 0 auto;
   padding: 20px 0px;
   width: 800px;
-  height: 100vh;
   background-color: #fff;
 `;
 
