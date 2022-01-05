@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useCookies } from 'react-cookie';
@@ -8,6 +8,7 @@ import Logo from '../Logo';
 
 const Header = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['connected']);
+  const [menu, setMenu] = useState('recent');
 
   return (
     <Wrapper>
@@ -15,9 +16,21 @@ const Header = () => {
         <LeftSection>
           <Logo />
           {/* <Search /> */}
-          <Menu>최신 음악</Menu>
-          <Menu> 음악 차트</Menu>
-          <Menu> 음악 추천</Menu>
+          <Menu isClicked={menu === 'recent'}>
+            <Link to="/" onClickCapture={() => setMenu('recent')}>
+              최신 음악
+            </Link>
+          </Menu>
+          <Menu isClicked={menu === 'chart'}>
+            <Link to="/chart" onClickCapture={() => setMenu('chart')}>
+              음악 차트
+            </Link>
+          </Menu>
+          <Menu isClicked={menu === 'recommend'}>
+            <Link to="/recommend" onClickCapture={() => setMenu('recommend')}>
+              음악 추천
+            </Link>
+          </Menu>
         </LeftSection>
         <Admin>
           {cookies.connected ? (
@@ -35,7 +48,7 @@ const Header = () => {
 
 export default Header;
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   position: fixed;
   width: 100%;
   border-bottom: 1px solid #d9d9d9;
@@ -87,18 +100,21 @@ const Admin = styled.div`
   }
 `;
 
-const Menu = styled.div`
+const Menu = styled.div<{ isClicked: boolean }>`
   position: relative;
   text-align: center;
   width: 80px;
   padding: 0px;
-  /* margin: 0px; */
   margin-top: 10px;
-  color: rgb(126, 126, 126);
   font-size: 15px;
   font-weight: 600;
   line-height: 22px;
   letter-spacing: -0.4px;
   box-sizing: border-box;
   cursor: pointer;
+
+  a {
+    text-decoration: none !important;
+    color: ${(props) => (props.isClicked ? 'rgb(0,0,0)' : 'rgb(126, 126, 126)')};
+  }
 `;
