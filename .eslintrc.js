@@ -72,6 +72,8 @@ module.exports = {
     ],
     // 외부 패키지 사용 금지 해제
     'import/no-unresolved': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
   },
   settings: {
     react: {
